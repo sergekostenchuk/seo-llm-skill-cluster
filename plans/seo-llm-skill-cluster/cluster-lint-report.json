@@ -1,6 +1,6 @@
 {
   "artifact_type": "cluster_lint_report",
-  "generated_at": "2026-06-11T19:36:42.286769Z",
+  "generated_at": "2026-06-11T19:40:31.386573Z",
   "cluster_root": ".",
   "skills_root": "./skills",
   "trigger_map": "./plans/seo-llm-skill-cluster/trigger-map.yaml",
@@ -105,6 +105,7 @@
       "seo-regression-validator",
       "server-log-crawler-analyst",
       "site-growth-orchestrator",
+      "ta<api-key-redacted>",
       "technical-seo-schema-engineer",
       "ui-ux-llm-product-architect",
       "ux-journey-architect",

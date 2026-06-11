@@ -1,0 +1,43 @@
+{
+  "artifact_type": "seo_regression_report",
+  "generated_at": "2026-06-11T00:00:00Z",
+  "target": "https://mlllm.io/",
+  "fetch": {
+    "method": "http",
+    "status_code": 200,
+    "content_type": "text/html",
+    "user_agent": "seo-regression-validator/0.1"
+  },
+  "status": "pass",
+  "issues": [],
+  "observed": {
+    "title": "mlllm.io - Live AI news and builder lab",
+    "meta_description": "Live AI news from TG-NEWS, English translations, Russian source editions, explainers, projects, and source-backed context.",
+    "canonical_count": 1,
+    "canonicals": [
+      "https://mlllm.io/"
+    ],
+    "hreflang_count": 3,
+    "hreflangs": [
+      "en",
+      "ru",
+      "x-default"
+    ],
+    "og_title": true,
+    "og_description": true,
+    "og_image": "https://mlllm.io/assets/mlllm-og-card.svg",
+    "twitter_card": "summary_large_image",
+    "viewport": "width=device-width, initial-scale=1",
+    "rss": "/rss.xml",
+    "article_published_time": null,
+    "article_modified_time": null,
+    "article_author": null,
+    "jsonld_blocks": 1,
+    "jsonld_types": [
+      "CollectionPage",
+      "Organization",
+      "Person",
+      "WebSite"
+    ]
+  }
+}

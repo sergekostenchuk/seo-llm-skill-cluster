@@ -99,6 +99,7 @@ Publication commit:
 
 ```text
 8393a08 Initial public SEO LLM skill cluster
+6a764c2 Document sanitized GitHub publication completion
 ```
 
 Publication mode:

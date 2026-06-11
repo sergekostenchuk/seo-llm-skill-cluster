@@ -3220,10 +3220,12 @@ artifact_locations:
 - `./PUBLICATION-SANITATION.md`
 - `./plans/seo-llm-skill-cluster/TASK-PLAN.md`
 - `https://github.com/sergekostenchuk/seo-llm-skill-cluster`
-- publication commit `8393a08`
+- initial public commit `8393a08`
+- final public head after T-025 status sync `6a764c2`
 code_artifacts:
 - public GitHub repository `https://github.com/sergekostenchuk/seo-llm-skill-cluster`
 - public initial commit `8393a08`
+- public status-sync commit `6a764c2`
 test_artifacts:
 - JSON validation: pass
 - YAML validation: pass

@@ -1,0 +1,96 @@
+name: Validate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate JSON files
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+
+          for path in sorted(Path(".").rglob("*.json")):
+              if ".git" in path.parts:
+                  continue
+              json.loads(path.read_text(encoding="utf-8"))
+          print("json-ok")
+          PY
+
+      - name: Validate YAML files
+        run: |
+          ruby -e 'require "yaml"; Dir["**/*.{yaml,yml}"].sort.each { |f| YAML.load_file(f) }; puts "yaml-ok"'
+
+      - name: Run cluster linter
+        run: |
+          mkdir -p .reports
+          python3 plans/seo-llm-skill-cluster/scripts/lint_skill_cluster.py . \
+            --report .reports/seo-llm-cluster-lint.json
+
+      - name: Verify MVP eval coverage
+        run: |
+          mkdir -p .reports
+          python3 plans/seo-llm-skill-cluster/scripts/verify_mvp_evals.py . \
+            --report .reports/seo-llm-mvp-evals.json
+
+      - name: Validate eval JSON files
+        run: |
+          for f in skills/*/evals.json; do
+            python3 -m json.tool "$f" >/dev/null
+          done
+
+      - name: Scan for sensitive publication patterns
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+
+          checks = [
+              ("local_user_path", re.compile(r"/Users/")),
+              ("temp_path", re.compile(r"/(?:private/)?tmp/")),
+              ("private_server_path", re.compile(r"/(?:var|opt)/")),
+              ("private_ip", re.compile(r"(?:82\.25\.56\.|66\.154\.|185\.167\.63\.86)")),
+              ("secret_or_email", re.compile(r"(?:sk-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9_]{20,}|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|API KEY:|PASSWORD=|TOKEN=|SECRET=|BEGIN (?:RSA|OPENSSH|PRIVATE) KEY|PRIVATE KEY)")),
+          ]
+
+          issues = []
+          for path in Path(".").rglob("*"):
+              if not path.is_file() or ".git" in path.parts:
+                  continue
+              if path.as_posix() == ".github/workflows/validate.yml":
+                  continue
+              if ".reports" in path.parts:
+                  continue
+              if path.suffix.lower() in {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}:
+                  continue
+              text = path.read_text(encoding="utf-8", errors="ignore")
+              for name, pattern in checks:
+                  if pattern.search(text):
+                      issues.append((name, str(path)))
+
+          if issues:
+              for name, path in issues[:100]:
+                  print(f"{name}: {path}")
+              print(f"issue_count: {len(issues)}")
+              sys.exit(1)
+
+          print("sensitive-pattern-scan-ok")
+          PY

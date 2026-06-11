@@ -1,0 +1,41 @@
+{
+  "artifact_type": "seo_regression_report",
+  "generated_at": "2026-06-11T00:00:00Z",
+  "target": "https://mlllm.io/news/948-langchain-introduces-self-checking-module-for-ai-agents/",
+  "fetch": {
+    "method": "http",
+    "status_code": 200,
+    "content_type": "text/html",
+    "user_agent": "seo-regression-validator/0.1"
+  },
+  "status": "pass",
+  "issues": [],
+  "observed": {
+    "title": "LangChain Introduces Self-Checking Module for AI Agents",
+    "meta_description": "LangChain has released the beta version of RubricMiddleware for its Deep Agents SDK, implementing the real-time LLM-as-a-judge pattern.",
+    "canonical_count": 1,
+    "canonicals": [
+      "https://mlllm.io/news/948-langchain-introduces-self-checking-module-for-ai-agents/"
+    ],
+    "hreflang_count": 3,
+    "hreflangs": [
+      "en",
+      "ru",
+      "x-default"
+    ],
+    "og_title": true,
+    "og_description": true,
+    "og_image": "https://mlllm.io/assets/mlllm-og-card.svg",
+    "twitter_card": "summary_large_image",
+    "viewport": "width=device-width, initial-scale=1",
+    "rss": "/rss.xml",
+    "article_published_time": "2026-06-08T18:05:12Z",
+    "article_modified_time": "2026-06-11T17:43:37Z",
+    "article_author": "https://mlllm.io/about/",
+    "jsonld_blocks": 1,
+    "jsonld_types": [
+      "BreadcrumbList",
+      "NewsArticle"
+    ]
+  }
+}

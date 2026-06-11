@@ -1,0 +1,41 @@
+{
+  "artifact_type": "seo_regression_report",
+  "generated_at": "2026-06-11T00:00:00Z",
+  "target": "https://mlllm.io/articles/948-langchain-introduces-rubricmiddleware-module-for-ai-agent-self-correction/",
+  "fetch": {
+    "method": "http",
+    "status_code": 200,
+    "content_type": "text/html",
+    "user_agent": "seo-regression-validator/0.1"
+  },
+  "status": "pass",
+  "issues": [],
+  "observed": {
+    "title": "LangChain Introduces RubricMiddleware Module for AI Agent...",
+    "meta_description": "A new component for the Deep Agents SDK implements the LLM-as-a-judge pattern, allowing agents to iteratively improve their results based on predefined...",
+    "canonical_count": 1,
+    "canonicals": [
+      "https://mlllm.io/articles/948-langchain-introduces-rubricmiddleware-module-for-ai-agent-self-correction/"
+    ],
+    "hreflang_count": 3,
+    "hreflangs": [
+      "en",
+      "ru",
+      "x-default"
+    ],
+    "og_title": true,
+    "og_description": true,
+    "og_image": "https://mlllm.io/assets/mlllm-og-card.svg",
+    "twitter_card": "summary_large_image",
+    "viewport": "width=device-width, initial-scale=1",
+    "rss": "/rss.xml",
+    "article_published_time": "2026-06-08T18:05:12Z",
+    "article_modified_time": "2026-06-11T17:43:37Z",
+    "article_author": "https://mlllm.io/about/",
+    "jsonld_blocks": 1,
+    "jsonld_types": [
+      "BreadcrumbList",
+      "TechArticle"
+    ]
+  }
+}
