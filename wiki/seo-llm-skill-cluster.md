@@ -1,6 +1,6 @@
 # SEO/LLM Skill Cluster
 
-status: staged MVP
+status: staged MVP published
 updated: 2026-06-11
 source_plan: `./plans/seo-llm-skill-cluster/TASK-PLAN.md`
 
@@ -102,30 +102,34 @@ Latest T-017 validation:
 
 Final post-plan validation:
 
-- TASK-PLAN: 25/25 tasks done, 0 register/block mismatches;
+- TASK-PLAN: 26/26 tasks done, 0 register/block mismatches;
 - production linter: pass for 13 staged skills;
 - eval JSON: pass for all staged skills;
 - cluster consistency linter: 13 staged skills checked, 0 critical issues, 0 warnings.
+
+GitHub publication validation:
+
+- public repository: `https://github.com/sergekostenchuk/seo-llm-skill-cluster`;
+- publication mode: fresh sanitized export, not local git history;
+- public package sanitation: pass;
+- JSON/YAML validation: pass;
+- production skill linter over 13 exported skills: pass;
+- MVP eval verifier: pass, 3 end-to-end cases.
 
 ## Next Work
 
 Next meaningful work:
 
-1. Complete `T-025`: prepare and publish a sanitized GitHub repository.
-2. Decide whether to install staged skills into `<codex-skills-dir>`.
-3. If installing, follow the install/rollback runbook and keep backups of any existing skill folders.
-4. Add credentialed monitoring integrations only after access/privacy approval.
-5. Use authority skills in dry-run mode until a specific external action is approved.
+1. Decide whether to install staged skills into `<codex-skills-dir>`.
+2. If installing, follow the install/rollback runbook and keep backups of any existing skill folders.
+3. Add credentialed monitoring integrations only after access/privacy approval.
+4. Use authority skills in dry-run mode until a specific external action is approved.
 
 ## GitHub Publication Gate
 
-`T-025` is intentionally draft. It cannot be completed until:
+`T-025` is complete. The public repository is:
 
-- target GitHub repository/remote is explicit;
-- public package scope is approved;
-- local paths and sensitive data are sanitized;
-- README and motivation text are reviewed;
-- user explicitly approves the push.
+- `https://github.com/sergekostenchuk/seo-llm-skill-cluster`
 
 Required publication narrative:
 

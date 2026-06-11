@@ -2,13 +2,13 @@
 
 date: 2026-06-11
 plan: `./plans/seo-llm-skill-cluster/TASK-PLAN.md`
-status: complete before GitHub publication task; superseded by T-025 draft
+status: complete; GitHub publication completed by T-025
 
 ## Task Plan Status
 
 - Total tasks: 26
-- Done: 25
-- Draft: 1 (`T-025`)
+- Done: 26
+- Draft: 0
 - Register/block mismatches: 0
 
 ## Staged Skills
@@ -82,10 +82,39 @@ missing_refs: []
 Current plan note:
 
 ```text
-T-025 was added after the original final validation as the GitHub publication task.
-It is intentionally draft and blocked by A-PUB-001 until repository target, sanitation scope,
-and push approval are explicit.
+T-025 was completed after the original final validation as the GitHub publication task.
+A-PUB-001 is resolved. A-EXT-001 and A-MON-001 remain active because external
+posting and credentialed monitoring still require explicit access/approval.
 ```
+
+## GitHub Publication
+
+T-025 published the public sanitized package:
+
+```text
+https://github.com/sergekostenchuk/seo-llm-skill-cluster
+```
+
+Publication commit:
+
+```text
+8393a08 Initial public SEO LLM skill cluster
+```
+
+Publication mode:
+
+```text
+fresh sanitized export, not the local git history
+```
+
+Sanitation and validation summary:
+
+- JSON validation: pass
+- YAML validation: pass
+- cluster linter: critical 0, warnings 0, skills checked 13
+- MVP eval verifier: pass, issues 0, end-to-end cases 3
+- production skill linter over 13 skills: pass
+- final sensitive-data scan: pass
 
 ## Important Boundary
 
@@ -109,4 +138,4 @@ The original skill-cluster build plan has been executed and committed. The clust
 staged skill workspace with v1 MVP skills plus follow-up content, UX, monitoring, citation, and
 authority skills. External actions and production install remain gated by design.
 
-GitHub publication is now tracked separately as `T-025`.
+GitHub publication is complete in `T-025`.

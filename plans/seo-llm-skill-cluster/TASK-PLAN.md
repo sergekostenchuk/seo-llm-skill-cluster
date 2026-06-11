@@ -127,9 +127,9 @@ entry_rule: Implementation tasks remain `draft` until T-000 inventories existing
 feature_active_alarms:
 - A-EXT-001
 - A-MON-001
-- A-PUB-001
 feature_resolved_alarms:
 - A-PATH-001
+- A-PUB-001
 
 ### ALARM A-PATH-001
 
@@ -198,21 +198,19 @@ must_propagate: true
 alarm_id: A-PUB-001
 alarm_type: placeholder
 severity: blocking
-status: active
+status: resolved
 scope: task
 applies_to: T-025
 location: GitHub publication target and public package approval
-summary: GitHub publication cannot proceed until the target repository/remote and final public-content approval are explicit.
-current_value: GitHub repository target, public package scope, and push approval are not confirmed.
+summary: GitHub publication target, public scope, sanitation review, and push approval were resolved during T-025.
+current_value: Published public repository `https://github.com/sergekostenchuk/seo-llm-skill-cluster` from a fresh sanitized export.
 why_present: The cluster contains local development paths, validation artifacts, and private-workstation context that must be sanitized before public release.
-missing_to_replace: Target GitHub repository URL or repo name, publication branch, public package scope, final sanitation review, and explicit approval to push.
+missing_to_replace: none
 replacement_target: Public GitHub release package with sanitized paths, README, motivation text, task plan, skills, and validation artifacts.
-replacement_plan: Resolve in T-025 by choosing the GitHub target, creating sanitized public docs, running sensitive-data scans, reviewing diff, committing, and pushing only after explicit approval.
+replacement_plan: Completed in T-025 by creating a fresh sanitized export, running publication checks, committing the export, and pushing to the public GitHub repository.
 owner_role: docs_sync
 blocks:
-- ready for T-025 push/publish step
-- in_progress for T-025 push/publish step
-- done for T-025
+- none
 must_propagate: true
 
 ## Execution Policy
@@ -394,7 +392,7 @@ validation_cluster:
 | T-022 | Cluster consistency linter and placeholder audit | done | P0 | implementer | [T-002, T-021] | [validator-review, skill-review] |
 | T-023 | Freshness and primary-source policy | done | P0 | planner | [T-001, T-002] | [freshness-review, safety-review] |
 | T-024 | MVP release cut and backlog split | done | P0 | planner | [T-000, T-001, T-002, T-021, T-023] | [architecture-review, user-approval] |
-| T-025 | Prepare and publish sanitized GitHub repository | draft | P1 | docs_sync | [T-017, T-018, T-020, T-023] | [privacy-review, publication-review, user-approval] |
+| T-025 | Prepare and publish sanitized GitHub repository | done | P1 | docs_sync | [T-017, T-018, T-020, T-023] | [privacy-review, publication-review, user-approval] |
 
 ## Tasks
 
@@ -3046,15 +3044,14 @@ task_id: T-025
 title: Prepare and publish sanitized GitHub repository
 rationale: The completed skill cluster should be published as a public GitHub project with the task plan, motivation, README, and validation evidence, but only after local paths, credentials, private infrastructure details, raw logs, and workstation-specific traces are removed or generalized.
 priority: P1
-status: draft
+status: done
 owner_role: docs_sync
 dependencies:
 - T-017
 - T-018
 - T-020
 - T-023
-blocked_by:
-- A-PUB-001
+blocked_by: []
 unblocks: []
 task_size: M
 goal: Create a public-ready GitHub package for the SEO/LLM skill cluster, write the public README/motivation, sanitize sensitive data, commit, and publish only after explicit user approval.
@@ -3153,11 +3150,9 @@ rollback_plan:
 - If wrong remote is configured before push, change remote without pushing.
 - If sensitive data is pushed, rotate affected secrets if any, remove from public repo, and coordinate history rewrite only after explicit user approval.
 active_alarm_ids:
-- A-PUB-001
-- A-EXT-001
-- A-MON-001
-resolved_alarm_ids:
 - none
+resolved_alarm_ids:
+- A-PUB-001
 agent_sequence:
 - planner
 - docs_sync
@@ -3193,14 +3188,26 @@ flakiness_risk: GitHub authentication, network, and repository permissions may v
 stop_on_failure: true
 commands_planned:
 - `git remote -v`
-- `rg -n "<local-user-path>/|<server-var-path>/|<server-opt-path>/|sk-[A-Za-z0-9_-]{20,}|API KEY|password|token|secret|raw IP|<server-ip-pattern>|<server-ip-pattern>|<server-ip-pattern>" .`
+- `rg -n "<local-user-path>/|<server-var-path>/|<server-opt-path>/|sk-[A-Za-z0-9_-]{20,}|API KEY|password|token|secret|raw IP|82\.25\.|66\.154\.|185\." .`
 - `find ./skills -name evals.json -print -exec python3 -m json.tool {} >/dev/null \;`
 - `python3 ./plans/seo-llm-skill-cluster/scripts/lint_skill_cluster.py . --report ./plans/seo-llm-skill-cluster/cluster-lint-report.json`
 - production skill linter over staged skills
 - `git diff --check`
 - `git status --short`
 commands_run:
-- none
+- `git remote -v`
+- `gh repo view sergekostenchuk/seo-llm-skill-cluster --json nameWithOwner,isPrivate,url,defaultBranchRef`
+- created a fresh export at temporary publication workspace from tracked files plus `README.md` and `PUBLICATION-SANITATION.md`
+- sanitized the export to remove local workstation paths, temp paths, private server paths/IP patterns, email/token/key patterns, and local install targets
+- `python3 -m json.tool` over all exported JSON files
+- YAML syntax validation over exported YAML files
+- `python3 plans/seo-llm-skill-cluster/scripts/lint_skill_cluster.py . --report plans/seo-llm-skill-cluster/cluster-lint-report.json`
+- `python3 plans/seo-llm-skill-cluster/scripts/verify_mvp_evals.py . --report plans/seo-llm-skill-cluster/evals/mvp-eval-results.json`
+- production skill linter over every exported `skills/*` directory
+- final sensitive-data scan over the sanitized export
+- `git init && git checkout -b main && git add . && git commit -m "Initial public SEO LLM skill cluster"`
+- `gh repo create sergekostenchuk/seo-llm-skill-cluster --public --description "Task-plan driven SEO and LLM-friendly website skill cluster" --source . --remote origin --push`
+- `gh repo view sergekostenchuk/seo-llm-skill-cluster --json url,nameWithOwner,isPrivate,defaultBranchRef`
 expected_artifacts:
 - sanitized public README
 - public motivation section
@@ -3210,6 +3217,25 @@ expected_artifacts:
 - publication commit
 artifact_locations:
 - `./README.md`
+- `./PUBLICATION-SANITATION.md`
 - `./plans/seo-llm-skill-cluster/TASK-PLAN.md`
-- future sanitation report path under `./plans/seo-llm-skill-cluster/`
+- `https://github.com/sergekostenchuk/seo-llm-skill-cluster`
+- publication commit `8393a08`
+code_artifacts:
+- public GitHub repository `https://github.com/sergekostenchuk/seo-llm-skill-cluster`
+- public initial commit `8393a08`
+test_artifacts:
+- JSON validation: pass
+- YAML validation: pass
+- cluster linter: critical 0, warnings 0, skills checked 13
+- MVP eval verifier: pass, issues 0, end-to-end cases 3
+- production skill linter over 13 skills: pass
+- final sensitive-data scan: pass
+review_artifacts:
+- privacy-review: pass for sanitized export
+- publication-review: pass for public README/motivation/safety boundaries
+- user-approval: user requested execution and publication in this turn
+decision_log:
+- 2026-06-11: Published from a fresh sanitized export instead of pushing local git history because source history contains workstation-specific paths.
+- 2026-06-11: Created new public repository `sergekostenchuk/seo-llm-skill-cluster` because no existing repository with that name was found.
 summary_format: Repository target, sanitized files, scan results, commit hash, GitHub URL, remaining publication risks.

@@ -1,6 +1,6 @@
 {
   "artifact_type": "cluster_lint_report",
-  "generated_at": "2026-06-11T19:24:13.913506Z",
+  "generated_at": "2026-06-11T19:36:42.286769Z",
   "cluster_root": ".",
   "skills_root": "./skills",
   "trigger_map": "./plans/seo-llm-skill-cluster/trigger-map.yaml",
