@@ -415,7 +415,7 @@ task_size: M
 goal: Produce `skill-inventory.md` with existing skill names, paths, trigger descriptions, overlap risks, reuse candidates, and upgrade-vs-new recommendations.
 scope_in:
 - Inspect relevant existing skills under `<codex-skills-dir>`.
-- Identify overlap with `seo-llm-site-architect`, `llm-friendly-site-optimizer`, `ui-ux-*`, `senior-skill-architect`, and `ta<api-key-redacted>`.
+- Identify overlap with `seo-llm-site-architect`, `llm-friendly-site-optimizer`, `ui-ux-*`, `senior-skill-architect`, and `task-plan-v2-orchestrator`.
 - Mark each concept skill as `new`, `upgrade-existing`, `merge`, `defer`, or `drop`.
 - Identify likely trigger collisions and near-miss prompts.
 scope_out:

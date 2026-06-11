@@ -21,7 +21,7 @@ It owns ordering and evidence. It does not make specialist decisions that belong
 | Harden admin, auth, logs, crawler exposure, headers | `web-security-architect` | `seo-llm-site-architect` | threat model, header/auth findings, safe allow/deny policy |
 | Monitor Search Console, AI citations, server crawler logs | `seo-regression-validator` first, then `llm-citation-monitor` | `web-security-architect` | credential status, timestamped checks, privacy notes |
 | Find places where links could help | `external-authority-placement-scout` after policy | `backlink-quality-validator`, `web-security-architect` | white-hat policy, opportunity register, user approval |
-| Create or package skills | `senior-skill-architect` | `cluster-consistency-linter`, `ta<api-key-redacted>` | skill lint, evals, install/rollback plan |
+| Create or package skills | `senior-skill-architect` | `cluster-consistency-linter`, `task-plan-v2-orchestrator` | skill lint, evals, install/rollback plan |
 
 ## Sequencing Rules
 

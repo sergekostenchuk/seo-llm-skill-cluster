@@ -2,7 +2,7 @@ artifact_type: trigger_map
 plan_id: PLAN-SEO-LLM-SKILL-CLUSTER
 task_id: T-021
 generated_at: "2026-06-11T00:00:00Z"
-producer_skill: ta<api-key-redacted>
+producer_skill: task-plan-v2-orchestrator
 status: complete
 source_inputs:
   - ./plans/seo-llm-skill-cluster/skill-inventory.md
@@ -40,14 +40,14 @@ skills:
       - "Do not trigger for a single narrow SEO/schema audit unless sequencing across skills is requested."
       - "Do not implement detailed schema, UX, security, or link-placement logic internally."
     handoff_to:
-      - ta<api-key-redacted>
+      - task-plan-v2-orchestrator
       - seo-llm-site-architect
       - llm-friendly-site-optimizer
       - ui-ux-llm-product-architect
       - web-security-architect
       - senior-skill-architect
 
-  - name: ta<api-key-redacted>
+  - name: task-plan-v2-orchestrator
     lifecycle: existing
     owner_role: planner
     trigger_contexts:
@@ -79,7 +79,7 @@ skills:
       - "Do not take over domain strategy unless the task is specifically skill design or validation."
     handoff_to:
       - skill-creator
-      - ta<api-key-redacted>
+      - task-plan-v2-orchestrator
 
   - name: seo-llm-site-architect
     lifecycle: existing-core
@@ -427,7 +427,7 @@ skills:
       - "User asks to update wiki, sync project knowledge, or preserve stable decisions."
     near_miss_prompts:
       - prompt: "Добавь задачу в TASK-PLAN"
-        route_to: ta<api-key-redacted>
+        route_to: task-plan-v2-orchestrator
       - prompt: "Создай skill"
         route_to: senior-skill-architect
     exclusion_rules:
@@ -462,7 +462,7 @@ near_miss_registry:
     fallback: llm-friendly-site-optimizer
   - prompt: "Создай новый production-grade skill"
     primary_owner: senior-skill-architect
-    fallback: ta<api-key-redacted>
+    fallback: task-plan-v2-orchestrator
   - prompt: "Обнови Obsidian wiki по проекту"
     primary_owner: wiki-update
     fallback: llm-wiki-maintainer

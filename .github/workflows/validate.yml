@@ -68,7 +68,7 @@ jobs:
               ("temp_path", re.compile(r"/(?:private/)?tmp/")),
               ("private_server_path", re.compile(r"/(?:var|opt)/")),
               ("private_ip", re.compile(r"(?:82\.25\.56\.|66\.154\.|185\.167\.63\.86)")),
-              ("secret_or_email", re.compile(r"(?:sk-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9_]{20,}|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|API KEY:|PASSWORD=|TOKEN=|SECRET=|BEGIN (?:RSA|OPENSSH|PRIVATE) KEY|PRIVATE KEY)")),
+              ("secret_or_email", re.compile(r"(?:(?<![A-Za-z0-9])sk-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9_]{20,}|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|API KEY:|PASSWORD=|TOKEN=|SECRET=|BEGIN (?:RSA|OPENSSH|PRIVATE) KEY|PRIVATE KEY)")),
           ]
 
           issues = []
