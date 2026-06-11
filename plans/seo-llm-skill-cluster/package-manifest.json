@@ -1,0 +1,61 @@
+{
+  "artifact_type": "skill_cluster_package_manifest",
+  "generated_at": "2026-06-11T00:00:00Z",
+  "producer_task": "T-017",
+  "status": "staged_not_installed",
+  "staging_root": "./skills",
+  "production_root": "<codex-skills-dir>",
+  "install_gate": "user approval plus validation review",
+  "skills": [
+    {
+      "name": "site-growth-orchestrator",
+      "source": "./skills/site-growth-orchestrator",
+      "target": "<codex-skills-dir>/site-growth-orchestrator",
+      "status": "staged"
+    },
+    {
+      "name": "semantic-core-architect",
+      "source": "./skills/semantic-core-architect",
+      "target": "<codex-skills-dir>/semantic-core-architect",
+      "status": "staged"
+    },
+    {
+      "name": "information-architecture-seo",
+      "source": "./skills/information-architecture-seo",
+      "target": "<codex-skills-dir>/information-architecture-seo",
+      "status": "staged"
+    },
+    {
+      "name": "internal-link-graph-architect",
+      "source": "./skills/internal-link-graph-architect",
+      "target": "<codex-skills-dir>/internal-link-graph-architect",
+      "status": "staged"
+    },
+    {
+      "name": "technical-seo-schema-engineer",
+      "source": "./skills/technical-seo-schema-engineer",
+      "target": "<codex-skills-dir>/technical-seo-schema-engineer",
+      "status": "staged"
+    },
+    {
+      "name": "llm-friendly-site-architect",
+      "source": "./skills/llm-friendly-site-architect",
+      "target": "<codex-skills-dir>/llm-friendly-site-architect",
+      "status": "staged"
+    },
+    {
+      "name": "seo-regression-validator",
+      "source": "./skills/seo-regression-validator",
+      "target": "<codex-skills-dir>/seo-regression-validator",
+      "status": "staged"
+    }
+  ],
+  "supporting_artifacts": [
+    "./plans/seo-llm-skill-cluster/trigger-map.yaml",
+    "./plans/seo-llm-skill-cluster/freshness-policy.md",
+    "./plans/seo-llm-skill-cluster/assets/artifact-schemas.md",
+    "./plans/seo-llm-skill-cluster/scripts/lint_skill_cluster.py",
+    "./plans/seo-llm-skill-cluster/scripts/verify_mvp_evals.py"
+  ]
+}
+

@@ -1,0 +1,85 @@
+{
+  "artifact_type": "skill_cluster_current_staging_manifest",
+  "generated_at": "2026-06-11T00:00:00Z",
+  "status": "staged_not_installed",
+  "staging_root": "./skills",
+  "production_root": "<codex-skills-dir>",
+  "production_install_gate": "explicit user approval plus install/rollback runbook",
+  "skills": [
+    {
+      "name": "site-growth-orchestrator",
+      "release_scope": "v1_mvp",
+      "status": "staged"
+    },
+    {
+      "name": "semantic-core-architect",
+      "release_scope": "v1_mvp",
+      "status": "staged"
+    },
+    {
+      "name": "information-architecture-seo",
+      "release_scope": "v1_mvp",
+      "status": "staged"
+    },
+    {
+      "name": "internal-link-graph-architect",
+      "release_scope": "v1_mvp",
+      "status": "staged"
+    },
+    {
+      "name": "technical-seo-schema-engineer",
+      "release_scope": "v1_mvp",
+      "status": "staged"
+    },
+    {
+      "name": "llm-friendly-site-architect",
+      "release_scope": "v1_mvp",
+      "status": "staged"
+    },
+    {
+      "name": "seo-regression-validator",
+      "release_scope": "v1_mvp",
+      "status": "staged"
+    },
+    {
+      "name": "editorial-quality-gate",
+      "release_scope": "post_v1_followup",
+      "status": "staged"
+    },
+    {
+      "name": "ux-journey-architect",
+      "release_scope": "post_v1_followup",
+      "status": "staged"
+    },
+    {
+      "name": "server-log-crawler-analyst",
+      "release_scope": "post_v1_followup",
+      "status": "staged"
+    },
+    {
+      "name": "llm-citation-monitor",
+      "release_scope": "post_v1_followup",
+      "status": "staged_manual_workflow"
+    },
+    {
+      "name": "external-authority-placement-scout",
+      "release_scope": "post_v1_followup",
+      "status": "staged_dry_run_only"
+    },
+    {
+      "name": "backlink-quality-validator",
+      "release_scope": "post_v1_followup",
+      "status": "staged_dry_run_only"
+    }
+  ],
+  "active_external_gates": [
+    {
+      "alarm": "A-MON-001",
+      "meaning": "Credentialed monitoring and automated assistant/search checks still require approved access and privacy handling."
+    },
+    {
+      "alarm": "A-EXT-001",
+      "meaning": "Real external placement actions remain blocked without explicit user approval."
+    }
+  ]
+}

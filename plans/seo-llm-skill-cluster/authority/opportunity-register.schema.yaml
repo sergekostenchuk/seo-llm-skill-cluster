@@ -1,0 +1,113 @@
+artifact_type: authority_opportunity_register
+version: "0.1"
+privacy:
+  contains_credentials: false
+  contains_private_messages: false
+  contains_private_account_data: false
+fields:
+  opportunity_id:
+    required: true
+    description: "Stable local ID."
+  platform_name:
+    required: true
+    description: "Name of external site/platform."
+  platform_url:
+    required: true
+    description: "Public URL of the platform or submission page."
+  opportunity_type:
+    required: true
+    allowed_values:
+      - owned_profile
+      - owned_repository
+      - documentation
+      - community_answer
+      - awesome_list
+      - launch_page
+      - guest_post
+      - partner_docs
+      - case_study
+  target_url:
+    required: true
+    description: "Page to receive the link."
+  proposed_anchor:
+    required: true
+    description: "Human-useful anchor text. No keyword stuffing."
+  relevance_score:
+    required: true
+    range: "0-3"
+  editorial_legitimacy_score:
+    required: true
+    range: "0-3"
+  user_value_score:
+    required: true
+    range: "0-3"
+  risk_score:
+    required: true
+    range: "0-3 where 3 means lowest risk"
+  permission_clarity_score:
+    required: true
+    range: "0-3"
+  target_fit_score:
+    required: true
+    range: "0-3"
+  total_score:
+    required: true
+    description: "Sum of scoring fields."
+  platform_rules_checked:
+    required: true
+    type: boolean
+  platform_rules_source:
+    required: true
+    description: "Official/public rules URL or note."
+  platform_rules_checked_at:
+    required: true
+    description: "ISO timestamp."
+  link_attribute_expected:
+    required: true
+    allowed_values:
+      - follow
+      - nofollow
+      - ugc
+      - sponsored
+      - unknown
+  automation_allowed:
+    required: true
+    type: boolean
+  user_approval_status:
+    required: true
+    allowed_values:
+      - not_requested
+      - requested
+      - approved
+      - rejected
+  external_action_status:
+    required: true
+    allowed_values:
+      - dry_run_only
+      - approved_pending
+      - completed
+      - rejected
+  notes:
+    required: false
+example_record:
+  opportunity_id: "AUTH-001"
+  platform_name: "Owned GitHub profile"
+  platform_url: "https://github.com/example"
+  opportunity_type: "owned_profile"
+  target_url: "https://example.com/projects/"
+  proposed_anchor: "public AI project notes"
+  relevance_score: 3
+  editorial_legitimacy_score: 2
+  user_value_score: 2
+  risk_score: 3
+  permission_clarity_score: 3
+  target_fit_score: 3
+  total_score: 16
+  platform_rules_checked: true
+  platform_rules_source: "owned account settings"
+  platform_rules_checked_at: "2026-06-11T00:00:00Z"
+  link_attribute_expected: "follow"
+  automation_allowed: false
+  user_approval_status: "not_requested"
+  external_action_status: "dry_run_only"
+  notes: "Example only; no external action performed."

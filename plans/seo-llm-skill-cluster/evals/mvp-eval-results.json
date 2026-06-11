@@ -1,0 +1,83 @@
+{
+  "artifact_type": "mvp_eval_results",
+  "generated_at": "2026-06-11T19:25:37.490959Z",
+  "status": "pass",
+  "mvp_skills": [
+    "site-growth-orchestrator",
+    "semantic-core-architect",
+    "information-architecture-seo",
+    "internal-link-graph-architect",
+    "technical-seo-schema-engineer",
+    "llm-friendly-site-architect",
+    "seo-regression-validator",
+    "cluster-consistency-linter"
+  ],
+  "skills": {
+    "site-growth-orchestrator": {
+      "positive_cases": 6,
+      "negative_cases": 6,
+      "sources": [
+        "./skills/site-growth-orchestrator/evals.json"
+      ],
+      "passed": true
+    },
+    "semantic-core-architect": {
+      "positive_cases": 3,
+      "negative_cases": 3,
+      "sources": [
+        "./skills/semantic-core-architect/evals.json"
+      ],
+      "passed": true
+    },
+    "information-architecture-seo": {
+      "positive_cases": 3,
+      "negative_cases": 3,
+      "sources": [
+        "./skills/information-architecture-seo/evals.json"
+      ],
+      "passed": true
+    },
+    "internal-link-graph-architect": {
+      "positive_cases": 3,
+      "negative_cases": 3,
+      "sources": [
+        "./skills/internal-link-graph-architect/evals.json"
+      ],
+      "passed": true
+    },
+    "technical-seo-schema-engineer": {
+      "positive_cases": 3,
+      "negative_cases": 3,
+      "sources": [
+        "./skills/technical-seo-schema-engineer/evals.json"
+      ],
+      "passed": true
+    },
+    "llm-friendly-site-architect": {
+      "positive_cases": 3,
+      "negative_cases": 3,
+      "sources": [
+        "./skills/llm-friendly-site-architect/evals.json"
+      ],
+      "passed": true
+    },
+    "seo-regression-validator": {
+      "positive_cases": 3,
+      "negative_cases": 3,
+      "sources": [
+        "./skills/seo-regression-validator/evals.json"
+      ],
+      "passed": true
+    },
+    "cluster-consistency-linter": {
+      "positive_cases": 3,
+      "negative_cases": 3,
+      "sources": [
+        "./plans/seo-llm-skill-cluster/evals/mvp-skill-cluster-evals.json"
+      ],
+      "passed": true
+    }
+  },
+  "end_to_end_cases": 3,
+  "issues": []
+}

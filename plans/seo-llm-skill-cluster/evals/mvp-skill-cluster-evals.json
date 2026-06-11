@@ -1,0 +1,136 @@
+{
+  "artifact_type": "mvp_skill_cluster_eval_suite",
+  "generated_at": "2026-06-11T00:00:00Z",
+  "producer_skill": "site-growth-orchestrator",
+  "scope": "MVP v0.1 from mvp-release-scope.md",
+  "mvp_skills": [
+    "site-growth-orchestrator",
+    "semantic-core-architect",
+    "information-architecture-seo",
+    "internal-link-graph-architect",
+    "technical-seo-schema-engineer",
+    "llm-friendly-site-architect",
+    "seo-regression-validator",
+    "cluster-consistency-linter"
+  ],
+  "per_skill_cases": {
+    "cluster-consistency-linter": {
+      "positive_cases": [
+        {
+          "name": "all_mvp_triggers_present",
+          "prompt": "Validate the cluster when all MVP skills have trigger-map entries and existing skill directories are structurally valid.",
+          "expected": [
+            "status pass",
+            "zero critical issues",
+            "trigger-map coverage reported"
+          ]
+        },
+        {
+          "name": "known_good_skill",
+          "prompt": "Run cluster linter against a known-good skill with SKILL.md, frontmatter, eval signal, validation signal, and trigger entry.",
+          "expected": [
+            "no critical issues",
+            "warnings allowed only for optional resources"
+          ]
+        },
+        {
+          "name": "cluster_report",
+          "prompt": "Generate cluster-lint-report.json for staged skills.",
+          "expected": [
+            "JSON report produced",
+            "skills checked count recorded",
+            "MVP expected skills listed"
+          ]
+        }
+      ],
+      "negative_cases": [
+        {
+          "name": "missing_skill_md",
+          "prompt": "Validate a skill directory without SKILL.md.",
+          "expected": [
+            "critical skill_md_missing"
+          ]
+        },
+        {
+          "name": "placeholder_in_skill",
+          "prompt": "Validate a skill with missing frontmatter and unresolved placeholder text.",
+          "expected": [
+            "critical frontmatter_missing",
+            "critical placeholder_found"
+          ]
+        },
+        {
+          "name": "missing_trigger_entry",
+          "prompt": "Validate MVP scope when a required MVP skill is absent from trigger-map.yaml.",
+          "expected": [
+            "critical mvp_trigger_missing"
+          ]
+        }
+      ]
+    }
+  },
+  "end_to_end_cases": [
+    {
+      "name": "mlllm_style_full_architecture",
+      "prompt": "Build an SEO and LLM-friendly architecture for an AI news site with one short brief, one longform article, EN/RU localization, topic pages, projects, author page, schema, llms.txt, RSS, sitemap, and validation.",
+      "expected_sequence": [
+        "site-growth-orchestrator",
+        "semantic-core-architect",
+        "information-architecture-seo",
+        "internal-link-graph-architect",
+        "technical-seo-schema-engineer",
+        "llm-friendly-site-architect",
+        "seo-regression-validator",
+        "cluster-consistency-linter"
+      ],
+      "must_refuse": [
+        "hidden bot-only facts",
+        "extra duplicate story pages",
+        "unsupported ranking or citation promises"
+      ]
+    },
+    {
+      "name": "saas_site_growth_plan",
+      "prompt": "Plan SEO, LLM-readable docs, product pages, comparisons, schema, internal links, and validation for a B2B SaaS site without Search Console access.",
+      "expected_sequence": [
+        "site-growth-orchestrator",
+        "semantic-core-architect",
+        "information-architecture-seo",
+        "internal-link-graph-architect",
+        "technical-seo-schema-engineer",
+        "llm-friendly-site-architect",
+        "seo-regression-validator"
+      ],
+      "must_refuse": [
+        "invented Search Console data",
+        "unverified ranking claims"
+      ]
+    },
+    {
+      "name": "portfolio_project_entity_graph",
+      "prompt": "Make a personal engineering portfolio discoverable to search engines and AI agents with project pages, author profile, blog, topics, schema, and validation.",
+      "expected_sequence": [
+        "site-growth-orchestrator",
+        "semantic-core-architect",
+        "information-architecture-seo",
+        "internal-link-graph-architect",
+        "technical-seo-schema-engineer",
+        "llm-friendly-site-architect",
+        "seo-regression-validator"
+      ],
+      "must_refuse": [
+        "hidden FAQ schema",
+        "fake external authority claims"
+      ]
+    }
+  ],
+  "deferred_skills_excluded": [
+    "editorial-quality-gate",
+    "ux-journey-architect",
+    "credential-free monitoring baseline",
+    "llm-citation-monitor",
+    "external-authority-placement-scout",
+    "backlink-quality-validator"
+  ]
+}
+

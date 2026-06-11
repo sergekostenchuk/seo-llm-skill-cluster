@@ -1,0 +1,49 @@
+{
+  "artifact_type": "site_access_snapshot",
+  "generated_at": "2026-06-11T00:00:00Z",
+  "target": "https://mlllm.io",
+  "user_agent": "seo-llm-cluster-e2e/0.1",
+  "observed": [
+    {
+      "url": "https://mlllm.io/robots.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 912
+    },
+    {
+      "url": "https://mlllm.io/llms.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 2755
+    },
+    {
+      "url": "https://mlllm.io/sitemap.xml",
+      "status": 200,
+      "content_type": "text/xml",
+      "bytes": 164656,
+      "xml_root": "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset",
+      "children": 1451
+    },
+    {
+      "url": "https://mlllm.io/news-sitemap.xml",
+      "status": 200,
+      "content_type": "text/xml",
+      "bytes": 396903,
+      "xml_root": "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset",
+      "children": 999
+    },
+    {
+      "url": "https://mlllm.io/rss.xml",
+      "status": 200,
+      "content_type": "text/xml",
+      "bytes": 63606,
+      "xml_root": "rss",
+      "children": 1
+    }
+  ],
+  "limitations": [
+    "No credentialed Search Console or analytics access was used.",
+    "No server logs were inspected.",
+    "No external posting, outreach, or authority placement was attempted."
+  ]
+}

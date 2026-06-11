@@ -1,0 +1,482 @@
+artifact_type: trigger_map
+plan_id: PLAN-SEO-LLM-SKILL-CLUSTER
+task_id: T-021
+generated_at: "2026-06-11T00:00:00Z"
+producer_skill: ta<api-key-redacted>
+status: complete
+source_inputs:
+  - ./plans/seo-llm-skill-cluster/skill-inventory.md
+  - ./plans/seo-llm-skill-cluster/cluster-architecture.md
+privacy:
+  contains_secrets: false
+  contains_private_urls: false
+  contains_raw_ip_logs: false
+  contains_private_analytics: false
+  redaction_note: none
+
+global_rules:
+  - "One user request can mention several domains, but each subtask must have one primary owner."
+  - "The orchestrator routes and prepares handoffs; it does not replace specialist skills."
+  - "Security, privacy, legal accuracy, accessibility, and visible user comprehension outrank SEO or LLM visibility tactics."
+  - "External placement requests are dry-run and approval-first."
+  - "Live rankings, crawler access, assistant citations, and platform rules require timestamped evidence."
+
+skills:
+  - name: site-growth-orchestrator
+    lifecycle: mvp
+    owner_role: planner
+    trigger_contexts:
+      - "User asks to coordinate SEO, LLM, UX, content, monitoring, and authority work as a sequence."
+      - "User asks to build or execute a full site-growth task plan."
+      - "User asks what to do next across several specialist domains."
+    near_miss_prompts:
+      - prompt: "Проверь schema.org на сайте"
+        route_to: seo-llm-site-architect
+      - prompt: "Сделай красивый дизайн главной"
+        route_to: ui-ux-llm-product-architect
+      - prompt: "Создай production-grade skill"
+        route_to: senior-skill-architect
+    exclusion_rules:
+      - "Do not trigger for a single narrow SEO/schema audit unless sequencing across skills is requested."
+      - "Do not implement detailed schema, UX, security, or link-placement logic internally."
+    handoff_to:
+      - ta<api-key-redacted>
+      - seo-llm-site-architect
+      - llm-friendly-site-optimizer
+      - ui-ux-llm-product-architect
+      - web-security-architect
+      - senior-skill-architect
+
+  - name: ta<api-key-redacted>
+    lifecycle: existing
+    owner_role: planner
+    trigger_contexts:
+      - "User asks to create, audit, update, or execute TASK-PLAN v2."
+      - "User asks to mark tasks done, add dependencies, alarms, verification, or task registers."
+    near_miss_prompts:
+      - prompt: "Какая SEO структура сайта правильная?"
+        route_to: seo-llm-site-architect
+      - prompt: "Создай новый skill folder"
+        route_to: senior-skill-architect
+    exclusion_rules:
+      - "Do not own domain-specific SEO/UX/security decisions beyond planning fields."
+    handoff_to:
+      - site-growth-orchestrator
+      - senior-skill-architect
+
+  - name: senior-skill-architect
+    lifecycle: existing
+    owner_role: reviewer
+    trigger_contexts:
+      - "User asks to create, upgrade, audit, package, lint, or evaluate Codex skills."
+      - "User asks to optimize trigger descriptions or build skill evals."
+    near_miss_prompts:
+      - prompt: "Собери семантическое ядро сайта"
+        route_to: semantic-core-architect
+      - prompt: "Проверь SEO сайта"
+        route_to: seo-llm-site-architect
+    exclusion_rules:
+      - "Do not take over domain strategy unless the task is specifically skill design or validation."
+    handoff_to:
+      - skill-creator
+      - ta<api-key-redacted>
+
+  - name: seo-llm-site-architect
+    lifecycle: existing-core
+    owner_role: architect
+    trigger_contexts:
+      - "SEO, technical SEO, organic visibility, indexing, schema.org, JSON-LD, canonical, hreflang."
+      - "robots.txt, sitemap.xml, news-sitemap, RSS, llms.txt policy, crawler/bot policy."
+      - "AI search visibility at architecture/crawl/index level."
+    near_miss_prompts:
+      - prompt: "Сделай TL;DR и direct answer в статье"
+        route_to: llm-friendly-site-optimizer
+      - prompt: "Проверь layout на mobile в Chrome"
+        route_to: ui-ux-llm-product-architect
+      - prompt: "Проверь CSP и заголовки безопасности"
+        route_to: web-security-architect
+    exclusion_rules:
+      - "Do not own hidden content, spam placement, or UX visual polish."
+      - "Do not claim rankings/citations without evidence."
+    handoff_to:
+      - llm-friendly-site-optimizer
+      - seo-regression-validator
+      - ui-ux-llm-product-architect
+      - web-security-architect
+
+  - name: semantic-core-architect
+    lifecycle: mvp-candidate
+    owner_role: architect
+    trigger_contexts:
+      - "User asks for semantic core, query clusters, entities, intents, topics, languages, priority."
+      - "User asks how to choose pillar pages or topic clusters from site goals."
+    near_miss_prompts:
+      - prompt: "Сделай URL структуру и canonical"
+        route_to: seo-llm-site-architect
+      - prompt: "Проверь текущий сайт live"
+        route_to: seo-regression-validator
+    exclusion_rules:
+      - "Do not define final URL/canonical policy beyond recommendations."
+      - "Do not invent search volume without source."
+    handoff_to:
+      - seo-llm-site-architect
+      - llm-friendly-site-optimizer
+
+  - name: information-architecture-seo
+    lifecycle: mvp
+    owner_role: architect
+    trigger_contexts:
+      - "User asks to turn a semantic core into crawlable URL structure, page roles, canonical rules, hreflang groups, pillar/topic hierarchy, or publication sections."
+      - "User asks how to preserve a site content model such as one short brief plus one longform article without duplicate public bodies."
+    near_miss_prompts:
+      - prompt: "Добавь JSON-LD NewsArticle и OG tags"
+        route_to: technical-seo-schema-engineer
+      - prompt: "Сделай граф перелинковки между brief, longform, topics, projects"
+        route_to: internal-link-graph-architect
+      - prompt: "Собери семантическое ядро перед URL структурой"
+        route_to: semantic-core-architect
+    exclusion_rules:
+      - "Do not write final content or visual design."
+      - "Do not implement schema templates beyond page-role requirements."
+      - "Do not canonicalize standalone pages into each other without an explicit content model decision."
+    handoff_to:
+      - internal-link-graph-architect
+      - technical-seo-schema-engineer
+      - llm-friendly-site-architect
+
+  - name: internal-link-graph-architect
+    lifecycle: mvp
+    owner_role: architect
+    trigger_contexts:
+      - "User asks to design internal links, breadcrumbs, source trails, related links, topic/project/author links, or orphan-page checks."
+      - "User asks to explain or validate how a short news page links to exactly one longform article and back."
+    near_miss_prompts:
+      - prompt: "Выбери URL структуру и canonical модель"
+        route_to: information-architecture-seo
+      - prompt: "Проверь rendered layout или UX путь"
+        route_to: ui-ux-llm-product-architect
+      - prompt: "Найди внешние площадки для ссылок"
+        route_to: external-authority-placement-scout
+    exclusion_rules:
+      - "Do not recommend hidden links, irrelevant exact-match anchors, or link stuffing."
+      - "Do not create extra duplicate story pages to increase link count."
+    handoff_to:
+      - technical-seo-schema-engineer
+      - llm-friendly-site-architect
+      - seo-regression-validator
+
+  - name: technical-seo-schema-engineer
+    lifecycle: mvp
+    owner_role: implementer
+    trigger_contexts:
+      - "User asks for title/meta description rules, canonical/hreflang, JSON-LD schema, OpenGraph/Twitter, sitemap/news-sitemap/RSS, robots.txt, llms.txt, publisher logo, or ImageObject templates."
+      - "User asks to implement deterministic technical SEO/schema guidance from an approved URL map."
+    near_miss_prompts:
+      - prompt: "Проверь live сайт и докажи, что schema работает"
+        route_to: seo-regression-validator
+      - prompt: "Сделай semantic core и query clusters"
+        route_to: semantic-core-architect
+      - prompt: "Сделай user onboarding на главной"
+        route_to: ui-ux-llm-product-architect
+    exclusion_rules:
+      - "Do not add schema for invisible content."
+      - "Do not claim Google/LLM behavior without validation evidence."
+      - "Do not run credentialed Search Console or analytics audits."
+    handoff_to:
+      - seo-regression-validator
+      - llm-friendly-site-architect
+      - web-security-architect
+
+  - name: seo-regression-validator
+    lifecycle: mvp
+    owner_role: tester
+    trigger_contexts:
+      - "User asks to verify live/static SEO outputs with pass/fail evidence."
+      - "User asks to prevent regressions in title/meta/canonical/hreflang/schema/sitemap/robots/llms/rss."
+    near_miss_prompts:
+      - prompt: "Спроектируй SEO структуру"
+        route_to: seo-llm-site-architect
+      - prompt: "Почему пользователю непонятна главная?"
+        route_to: ui-ux-llm-product-architect
+    exclusion_rules:
+      - "Do not redesign strategy; validate against expected artifacts."
+      - "Do not run credentialed audits unless access policy exists."
+    handoff_to:
+      - agent-browser-codex
+      - seo-llm-site-architect
+
+  - name: llm-friendly-site-architect
+    lifecycle: mvp
+    owner_role: architect
+    trigger_contexts:
+      - "User asks to design machine-readable public site layers for AI assistants, RAG, llms.txt, source trails, entity pages, markdown alternates, answer blocks, and crawler-readable HTML."
+      - "User asks to make SEO architecture LLM-friendly without multiplying content or adding hidden bot-only blocks."
+    near_miss_prompts:
+      - prompt: "Проверь canonical/hreflang/schema на live HTML"
+        route_to: seo-regression-validator
+      - prompt: "Добавь технические schema templates"
+        route_to: technical-seo-schema-engineer
+      - prompt: "Проверь цитирование в ChatGPT/Perplexity"
+        route_to: llm-citation-monitor
+    exclusion_rules:
+      - "Do not create hidden bot-only facts or hidden FAQ schema."
+      - "Do not add TL;DR or FAQ everywhere by default; visible content and page role decide."
+      - "Do not treat llms.txt as a guaranteed ranking or citation factor."
+    handoff_to:
+      - technical-seo-schema-engineer
+      - seo-regression-validator
+      - llm-citation-monitor
+
+  - name: llm-friendly-site-optimizer
+    lifecycle: existing-upgrade-candidate
+    owner_role: architect
+    trigger_contexts:
+      - "llms.txt, AI citation readiness, pillar pages, direct answers, TL;DR, FAQ when visible."
+      - "Assistant citation monitoring, topic-to-URL matrix, RAG-friendly content structure."
+    near_miss_prompts:
+      - prompt: "Проверь canonical/hreflang"
+        route_to: seo-llm-site-architect
+      - prompt: "Сделай внешний link placement"
+        route_to: external-authority-placement-scout
+    exclusion_rules:
+      - "Do not create hidden bot-only content."
+      - "Do not add FAQ schema unless visible FAQ exists."
+    handoff_to:
+      - seo-llm-site-architect
+      - llm-citation-monitor
+      - external-authority-placement-scout
+
+  - name: editorial-quality-gate
+    lifecycle: post-mvp
+    owner_role: reviewer
+    trigger_contexts:
+      - "User asks to review public content quality before publication: news briefs, longform articles, blog posts, topic pages, project pages, or translations."
+      - "User asks to catch prompt residue, repeated generated blocks, unsupported claims, translation drift, hidden filler, or source-less SEO claims."
+    near_miss_prompts:
+      - prompt: "Сделай семантическую стратегию контента на квартал"
+        route_to: content-strategy-architect
+      - prompt: "Настрой переводческий pipeline"
+        route_to: translation-localization-seo
+      - prompt: "Проверь устаревшие статьи по sitemap"
+        route_to: content-decay-monitor
+    exclusion_rules:
+      - "Do not edit live publishing pipelines."
+      - "Do not own model provider credentials or localization implementation."
+      - "Do not rewrite whole articles unless explicitly requested."
+    handoff_to:
+      - technical-seo-schema-engineer
+      - llm-friendly-site-architect
+      - seo-regression-validator
+
+  - name: cluster-consistency-linter
+    lifecycle: mvp
+    owner_role: tester
+    trigger_contexts:
+      - "User asks to lint or validate the SEO/LLM skill cluster, trigger-map coverage, missing SKILL.md, placeholders, artifact contract coverage, eval prompts, or validation commands."
+      - "User asks whether generated skill folders are structurally ready before packaging."
+    near_miss_prompts:
+      - prompt: "Проверь production quality одного skill"
+        route_to: senior-skill-architect
+      - prompt: "Проверь live SEO сайта"
+        route_to: seo-regression-validator
+      - prompt: "Создай новый skill"
+        route_to: senior-skill-architect
+    exclusion_rules:
+      - "Do not claim domain correctness from structural lint alone."
+      - "Do not validate external SEO facts, rankings, or crawler behavior."
+    handoff_to:
+      - senior-skill-architect
+      - seo-regression-validator
+
+  - name: ui-ux-llm-product-architect
+    lifecycle: existing
+    owner_role: architect
+    trigger_contexts:
+      - "UI, UX, user journeys, onboarding, layout, accessibility, agent-readable UI, rendered page quality."
+    near_miss_prompts:
+      - prompt: "Проверь robots.txt"
+        route_to: seo-llm-site-architect
+      - prompt: "Проверь безопасность админки"
+        route_to: web-security-architect
+    exclusion_rules:
+      - "Do not own SEO metadata/schema unless coordinating with SEO owner."
+    handoff_to:
+      - seo-llm-site-architect
+      - agent-browser-codex
+
+  - name: ux-journey-architect
+    lifecycle: post-mvp
+    owner_role: architect
+    trigger_contexts:
+      - "User asks to map user journeys, onboarding paths, entry points, first actions, CTA hierarchy, trust points, or audience-specific paths."
+      - "User asks how new readers, returning readers, project reviewers, community members, buyers, or AI agents should move through a public site."
+    near_miss_prompts:
+      - prompt: "Проверь layout в Chrome на mobile"
+        route_to: ui-layout-validator
+      - prompt: "Сделай визуальный дизайн страницы"
+        route_to: ui-ux-llm-product-architect
+      - prompt: "Проверь canonical/schema"
+        route_to: technical-seo-schema-engineer
+    exclusion_rules:
+      - "Do not redesign the visual system."
+      - "Do not implement browser layout checks."
+      - "Do not override SEO/LLM content model without handoff."
+    handoff_to:
+      - ui-ux-llm-product-architect
+      - information-architecture-seo
+      - llm-friendly-site-architect
+
+  - name: web-security-architect
+    lifecycle: existing
+    owner_role: reviewer
+    trigger_contexts:
+      - "Security, auth, admin access, private/public boundaries, headers, CSP/CORS, logs, secrets, bot abuse."
+      - "AI/agent feature security and safe public crawler access boundaries."
+    near_miss_prompts:
+      - prompt: "Разрешить GPTBot в robots.txt"
+        route_to: seo-llm-site-architect
+      - prompt: "Проверить, видит ли Google сайт"
+        route_to: seo-regression-validator
+    exclusion_rules:
+      - "Do not own ranking, citation, or UX strategy unless security affects it."
+    handoff_to:
+      - seo-llm-site-architect
+      - site-growth-orchestrator
+
+  - name: external-authority-placement-scout
+    lifecycle: post-mvp
+    owner_role: planner
+    trigger_contexts:
+      - "User asks where to place links, find white-hat opportunities, prepare outreach, submit to directories or lists."
+    near_miss_prompts:
+      - prompt: "Проверь, цитирует ли ChatGPT сайт"
+        route_to: llm-citation-monitor
+      - prompt: "Сделай internal links между страницами"
+        route_to: seo-llm-site-architect
+    exclusion_rules:
+      - "Do not post, comment, submit, or open PRs without explicit user approval."
+      - "Do not use PBNs, link farms, fake reviews, spam, or hidden placement."
+    handoff_to:
+      - backlink-quality-validator
+      - web-security-architect
+
+  - name: backlink-quality-validator
+    lifecycle: post-mvp
+    owner_role: reviewer
+    trigger_contexts:
+      - "User asks whether an external link opportunity or placed backlink is safe, relevant, useful, indexed, nofollow/ugc/sponsored, or risky."
+      - "User asks to reject toxic, irrelevant, spam, PBN, fake-review, paid-undisclosed, or low-quality link opportunities."
+    near_miss_prompts:
+      - prompt: "Найди площадки для ссылок"
+        route_to: external-authority-placement-scout
+      - prompt: "Проверь рост позиций после ссылки"
+        route_to: rank-serp-monitor
+    exclusion_rules:
+      - "Do not find or post new opportunities."
+      - "Do not make ranking attribution claims without measurement."
+      - "Do not make disavow decisions without broader SEO review."
+    handoff_to:
+      - external-authority-placement-scout
+      - seo-regression-validator
+      - web-security-architect
+
+  - name: llm-citation-monitor
+    lifecycle: post-mvp
+    owner_role: tester
+    trigger_contexts:
+      - "User asks whether ChatGPT, Perplexity, Claude, Gemini, Copilot, or search assistants cite the site."
+      - "User asks for assistant query monitoring with timestamps and cited URLs."
+    near_miss_prompts:
+      - prompt: "Сделай llms.txt"
+        route_to: llm-friendly-site-optimizer
+      - prompt: "Проверь robots for GPTBot"
+        route_to: seo-llm-site-architect
+    exclusion_rules:
+      - "Do not generalize one prompt result into a universal ranking/citation claim."
+      - "Do not use credentialed assistant/search surfaces without access policy."
+    handoff_to:
+      - llm-friendly-site-optimizer
+      - seo-regression-validator
+
+  - name: server-log-crawler-analyst
+    lifecycle: post-mvp
+    owner_role: tester
+    trigger_contexts:
+      - "User asks to analyze server access logs, crawler hits, bot user agents, suspicious probes, or raw events without Search Console credentials."
+      - "User asks for credential-free monitoring of robots.txt, llms.txt, sitemap, RSS, public URL availability, or crawler evidence."
+    near_miss_prompts:
+      - prompt: "Проверь позиции сайта в Google"
+        route_to: rank-serp-monitor
+      - prompt: "Проанализируй Search Console export"
+        route_to: search-console-analyst
+      - prompt: "Проверь цитирование в ChatGPT"
+        route_to: llm-citation-monitor
+    exclusion_rules:
+      - "Do not publish raw IP addresses."
+      - "Do not claim ranking, indexing, or assistant citation from logs alone."
+      - "Do not scrape search engines or change firewall/WAF settings."
+    handoff_to:
+      - llm-citation-monitor
+      - seo-regression-validator
+      - web-security-architect
+
+  - name: wiki-update
+    lifecycle: existing
+    owner_role: docs_sync
+    trigger_contexts:
+      - "User asks to update wiki, sync project knowledge, or preserve stable decisions."
+    near_miss_prompts:
+      - prompt: "Добавь задачу в TASK-PLAN"
+        route_to: ta<api-key-redacted>
+      - prompt: "Создай skill"
+        route_to: senior-skill-architect
+    exclusion_rules:
+      - "Do not become the canonical plan source; TASK-PLAN remains source of truth."
+    handoff_to:
+      - llm-wiki-maintainer
+
+near_miss_registry:
+  - prompt: "Проверь schema.org и canonical на сайте"
+    primary_owner: seo-llm-site-architect
+    fallback: seo-regression-validator
+  - prompt: "Сделай TL;DR сверху статьи для LLM"
+    primary_owner: llm-friendly-site-optimizer
+    fallback: seo-llm-site-architect
+  - prompt: "Сделай красивую и понятную главную страницу"
+    primary_owner: ui-ux-llm-product-architect
+    fallback: seo-llm-site-architect
+  - prompt: "Почему Gemini не может зайти на сайт?"
+    primary_owner: seo-llm-site-architect
+    fallback: web-security-architect
+  - prompt: "Размести ссылки на сайт на площадках"
+    primary_owner: external-authority-placement-scout
+    fallback: web-security-architect
+  - prompt: "Проверь, не опасны ли IP в логах"
+    primary_owner: web-security-architect
+    fallback: seo-llm-site-architect
+  - prompt: "Собери семантическое ядро для сайта"
+    primary_owner: semantic-core-architect
+    fallback: seo-llm-site-architect
+  - prompt: "Нарисуй путь нового читателя"
+    primary_owner: ui-ux-llm-product-architect
+    fallback: llm-friendly-site-optimizer
+  - prompt: "Создай новый production-grade skill"
+    primary_owner: senior-skill-architect
+    fallback: ta<api-key-redacted>
+  - prompt: "Обнови Obsidian wiki по проекту"
+    primary_owner: wiki-update
+    fallback: llm-wiki-maintainer
+  - prompt: "Проверь сайт в Chrome на desktop/mobile"
+    primary_owner: agent-browser-codex
+    fallback: ui-ux-llm-product-architect
+  - prompt: "Проверь, цитирует ли Perplexity сайт"
+    primary_owner: llm-citation-monitor
+    fallback: llm-friendly-site-optimizer
+
+unresolved_risks:
+  - risk: "Some MVP boundaries depend on T-024 release cut."
+    owner: site-growth-orchestrator
+    action: "Exclude ambiguous skills from MVP if trigger ownership is not approved."
+  - risk: "External authority and credentialed monitoring remain post-MVP."
+    owner: site-growth-orchestrator
+    action: "Keep A-EXT-001 and A-MON-001 active until policy/access tasks resolve them."

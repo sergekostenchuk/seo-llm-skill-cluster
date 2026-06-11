@@ -1,0 +1,115 @@
+{
+  "artifact_type": "cluster_lint_report",
+  "generated_at": "2026-06-11T19:24:13.913506Z",
+  "cluster_root": ".",
+  "skills_root": "./skills",
+  "trigger_map": "./plans/seo-llm-skill-cluster/trigger-map.yaml",
+  "mvp_scope": "./plans/seo-llm-skill-cluster/mvp-release-scope.md",
+  "artifact_contract": "./plans/seo-llm-skill-cluster/assets/artifact-schemas.md",
+  "status": "pass",
+  "issues": [],
+  "skills": {
+    "backlink-quality-validator": {
+      "path": "./skills/backlink-quality-validator",
+      "exists": true,
+      "issues": []
+    },
+    "editorial-quality-gate": {
+      "path": "./skills/editorial-quality-gate",
+      "exists": true,
+      "issues": []
+    },
+    "external-authority-placement-scout": {
+      "path": "./skills/external-authority-placement-scout",
+      "exists": true,
+      "issues": []
+    },
+    "information-architecture-seo": {
+      "path": "./skills/information-architecture-seo",
+      "exists": true,
+      "issues": []
+    },
+    "internal-link-graph-architect": {
+      "path": "./skills/internal-link-graph-architect",
+      "exists": true,
+      "issues": []
+    },
+    "llm-citation-monitor": {
+      "path": "./skills/llm-citation-monitor",
+      "exists": true,
+      "issues": []
+    },
+    "llm-friendly-site-architect": {
+      "path": "./skills/llm-friendly-site-architect",
+      "exists": true,
+      "issues": []
+    },
+    "semantic-core-architect": {
+      "path": "./skills/semantic-core-architect",
+      "exists": true,
+      "issues": []
+    },
+    "seo-regression-validator": {
+      "path": "./skills/seo-regression-validator",
+      "exists": true,
+      "issues": []
+    },
+    "server-log-crawler-analyst": {
+      "path": "./skills/server-log-crawler-analyst",
+      "exists": true,
+      "issues": []
+    },
+    "site-growth-orchestrator": {
+      "path": "./skills/site-growth-orchestrator",
+      "exists": true,
+      "issues": []
+    },
+    "technical-seo-schema-engineer": {
+      "path": "./skills/technical-seo-schema-engineer",
+      "exists": true,
+      "issues": []
+    },
+    "ux-journey-architect": {
+      "path": "./skills/ux-journey-architect",
+      "exists": true,
+      "issues": []
+    }
+  },
+  "summary": {
+    "critical": 0,
+    "warnings": 0,
+    "skills_checked": 13,
+    "mvp_skills_expected": [
+      "cluster-consistency-linter",
+      "information-architecture-seo",
+      "internal-link-graph-architect",
+      "llm-friendly-site-architect",
+      "semantic-core-architect",
+      "seo-regression-validator",
+      "site-growth-orchestrator",
+      "technical-seo-schema-engineer"
+    ],
+    "trigger_map_entries": [
+      "backlink-quality-validator",
+      "cluster-consistency-linter",
+      "editorial-quality-gate",
+      "external-authority-placement-scout",
+      "information-architecture-seo",
+      "internal-link-graph-architect",
+      "llm-citation-monitor",
+      "llm-friendly-site-architect",
+      "llm-friendly-site-optimizer",
+      "semantic-core-architect",
+      "senior-skill-architect",
+      "seo-llm-site-architect",
+      "seo-regression-validator",
+      "server-log-crawler-analyst",
+      "site-growth-orchestrator",
+      "technical-seo-schema-engineer",
+      "ui-ux-llm-product-architect",
+      "ux-journey-architect",
+      "web-security-architect",
+      "wiki-update"
+    ]
+  }
+}
